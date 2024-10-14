@@ -16,10 +16,6 @@ namespace Test.Platformer
 
         public Vector2 Position { get; set; }
 
-        //public Rectangle rect = new Rectangle(_animation.CurrentFrame * _animation.FrameWidth,
-        //                                   0,
-        //                                   _animation.FrameWidth,
-        //                                   _animation.FrameHeight);
         public AnimationManager(Animation animation)
         {
             _animation = animation;
