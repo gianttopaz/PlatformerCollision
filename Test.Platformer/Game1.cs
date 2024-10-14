@@ -13,8 +13,7 @@ namespace Test.Platformer
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-
-
+        
         private Dictionary<Vector2, int> tilemap;
         private Dictionary<Vector2, int> collisions;
         private List<Rectangle> textureStore;
@@ -23,9 +22,6 @@ namespace Test.Platformer
         private Vector2 camera;
 
         int tilesize = 16;
-
-
-        // sprite
 
         private Sprite player;
         private List<Rectangle> intersections;
@@ -75,8 +71,6 @@ namespace Test.Platformer
         }
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
@@ -91,7 +85,7 @@ namespace Test.Platformer
                 {"RunLeft", new Animation(Content.Load<Texture2D>("PlayerRunLeft"), 6) },
                 {"RunRight", new Animation(Content.Load<Texture2D>("PlayerRunRight"), 6) },
             };
-
+            
             textureMap = Content.Load<Texture2D>("TexturePack");
             collisionMap = Content.Load<Texture2D>("TextureCollisionPack");
 
@@ -102,7 +96,6 @@ namespace Test.Platformer
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
 
                 player.Update(Keyboard.GetState(), prevKBState, gameTime);
             player.isClinging = false;
@@ -193,7 +186,6 @@ namespace Test.Platformer
 
             base.Update(gameTime);
         }
-
         // wabs the intersecting tiles for a Rect. This grabs all tile positions where
         // an intersection is __possible__, not if a tile actually exists there.
         public List<Rectangle> getIntersectingTilesHorizontal(Rectangle target)
@@ -251,7 +243,6 @@ namespace Test.Platformer
             return intersections;
         }
 
-
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
@@ -261,6 +252,7 @@ namespace Test.Platformer
 
             int numTilesPerRow = 4;
 
+            //collision tiles
             foreach (var item in collisions)
             {
                 Rectangle dest = new(
@@ -301,77 +293,15 @@ namespace Test.Platformer
                 _spriteBatch.Draw(textureMap, dest, src, Color.White);
             }
 
-            //foreach (var rect in intersections)
-            //{
-
-            //    DrawRectHollow(
-            //        _spriteBatch,
-            //        new Rectangle(
-            //            rect.X * tilesize,
-            //            rect.Y * tilesize,
-            //            tilesize,
-            //            tilesize
-            //        ),
-            //        4
-            //    );
-
-            //}
-
             player.Draw(_spriteBatch);
-
-            //DrawRectHollow(_spriteBatch, player.rect, 4);
 
             _spriteBatch.End();
 
-            //Console.WriteLine(player.stopwatch.Elapsed.ToString());
             Console.WriteLine(player.wallJump);
 
             base.Draw(gameTime);
         }
 
-        //public void DrawRectHollow(SpriteBatch spriteBatch, Rectangle rect, int thickness)
-        //{
-        //    spriteBatch.Draw(
-        //        rectangleTexture,
-        //        new Rectangle(
-        //            rect.X,
-        //            rect.Y,
-        //            rect.Width,
-        //            thickness
-        //        ),
-        //        Color.White
-        //    );
-        //    spriteBatch.Draw(
-        //        rectangleTexture,
-        //        new Rectangle(
-        //            rect.X,
-        //            rect.Bottom - thickness,
-        //            rect.Width,
-        //            thickness
-        //        ),
-        //        Color.White
-        //    );
-        //    spriteBatch.Draw(
-        //        rectangleTexture,
-        //        new Rectangle(
-        //            rect.X,
-        //            rect.Y,
-        //            thickness,
-        //            rect.Height
-        //        ),
-        //        Color.White
-        //    );
-        //    spriteBatch.Draw(
-        //        rectangleTexture,
-        //        new Rectangle(
-        //            rect.Right - thickness,
-        //            rect.Y,
-        //            thickness,
-        //            rect.Height
-        //        ),
-        //        Color.White
-        //    );
-        //}
 
     }
 }
