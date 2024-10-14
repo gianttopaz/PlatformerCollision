@@ -52,16 +52,6 @@ public class Sprite
     public bool wallJump;
     private float spawn = 0;
 
-    //public Sprite()
-    //{
-    //    velocity = new();
-    //    isGrounded = false;
-    //    isClinging = false;
-    //    Direction = 1;
-    //    isStatic = false;
-    //    isFalling = false;
-    //    wallJump = false;
-    //}
     public Sprite(Dictionary<string, Animation> animations, Rectangle rect)
     {
         this.animations = animations;
@@ -86,97 +76,6 @@ public class Sprite
 
         Position += velocity;
         velocity = Vector2.Zero;
-
-
-        //int prevDir = Direction;
-
-        //if (velocity.Y > 0)
-        //{ 
-        //    isFalling = true;
-        //}
-        //else isFalling = false;
-
-        //if (isGrounded)
-        //{
-        //    isClinging = false;
-        //}
-
-        //isStatic = true;
-
-        //velocity.Y += 0.5f;
-        //velocity.Y = Math.Min(velocity.Y, 10.0f);
-
-
-        //if (keystate.IsKeyDown(Keys.Right))
-        //{
-        //    velocity.X += 1.5f;
-        //    velocity.X = Math.Min(velocity.X, 5);
-        //    Direction = 1;
-        //    isStatic = false;
-        //}
-        //if (!wallJump && keystate.IsKeyDown(Keys.Left))
-        //{
-        //    velocity.X -= 1.5f;
-        //    velocity.X = Math.Min(velocity.X, -5);
-        //    if (!isClinging && !wallJump)
-        //    {
-        //        Direction = -1;
-        //    }
-        //    else if (isClinging && isFalling)
-        //    {
-        //        Direction = 1;
-        //    }
-        //    isStatic = false;
-        //    if ((isClinging && isFalling) && keystate.IsKeyDown(Keys.Space) && !prevKBState.IsKeyDown(Keys.Space))
-        //    {
-        //        wallJump = true;
-        //    }
-        //}
-
-        //if (wallJump)
-        //{
-        //    spawn += (float)gameTime.ElapsedGameTime.TotalSeconds;
-        //    velocity.X += 3f;
-        //    if (spawn >= 0.15)
-        //    {
-        //        wallJump = false;   
-        //        spawn = 0;
-        //    }
-        //}
-        //else
-        //    velocity.X = Math.Max(-5f, Math.Min(5f, velocity.X));
-        ////friction
-        //if (isStatic)
-        //    velocity.X *= 0.7f;
-        //// wall hold
-        //if (isFalling && isClinging)
-        //    velocity.Y = 2.5f;
-
-        ////jump/walljump
-        //if ((isGrounded || (isClinging && isFalling)) && keystate.IsKeyDown(Keys.Space) && !prevKBState.IsKeyDown(Keys.Space))
-        //{
-        //    velocity.Y = -8;
-        //}
-        ////fastfall
-        //if (isFalling & keystate.IsKeyDown(Keys.Down))
-        //{
-        //    velocity.Y = 8;
-        //}
-        ////flipper
-        //if (prevDir != Direction)
-        //{
-        //    srect.X += srect.Width;
-        //    srect.Width = -srect.Width;
-
-        //}
-        //if (isGrounded)
-        //{
-        //    animationPlayer.PlayAnimation(idleAnimation);
-        //}
-        //else if (velocity.X != 0 && isGrounded)
-        //{
-        //    animationPlayer.PlayAnimation(runAnimation);
-        //}
 
     }
 
@@ -204,18 +103,6 @@ public class Sprite
         else if (Keyboard.GetState().IsKeyDown(Keys.Right))
             velocity.X = Speed;
     }
-
-    //public void OnKilled()
-    //{
-    //    isAlive = false;
-
-    //    if (killedBy != null)
-    //        killedSound.Play();
-    //    else
-    //        fallSound.Play();
-
-    //    sprite.PlayAnimation(dieAnimation);
-    //}
 
     public virtual void Draw(SpriteBatch spriteBatch)
     {
