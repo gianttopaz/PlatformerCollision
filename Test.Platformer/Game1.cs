@@ -19,7 +19,6 @@ namespace Test.Platformer
         private List<Rectangle> textureStore;
         private Texture2D textureMap;
         private Texture2D collisionMap;
-        private Vector2 camera;
 
         int tilesize = 16;
 
@@ -146,8 +145,7 @@ namespace Test.Platformer
 
             player.rect.Y += (int)player.velocity.Y;
             intersections = getIntersectingTilesVertical(player.rect);
-            player.isGrounded = false;
-
+            
             foreach (var rect in intersections)
             {
                 if (collisions.TryGetValue(new Vector2(rect.X, rect.Y), out int _val))
@@ -172,13 +170,10 @@ namespace Test.Platformer
                     {
                         player.rect.Y = collision.Top - player.rect.Height;
                         player.velocity.Y = 2f;
-                        player.isGrounded = true;
                     }
                     else if (player.velocity.Y < 0.0f)
                     {
                         player.rect.Y = collision.Bottom;
-                        player.velocity.Y = -1.0f;
-
                     }
 
                 }
@@ -247,7 +242,6 @@ namespace Test.Platformer
         {
             GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
             _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
 
             int numTilesPerRow = 4;
