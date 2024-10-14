@@ -36,7 +36,6 @@ namespace Test.Platformer
             IsMouseVisible = true;
             tilemap = LoadMap("../../../Data/map1_main.csv");
             collisions = LoadMap("../../../Data/map1_collisions.csv");
-            camera = Vector2.Zero;
             intersections = new();
 
         }
