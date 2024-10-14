@@ -17,10 +17,10 @@ public class Sprite
     public Texture2D texture;
     public Rectangle rect;
     public Vector2 velocity;
-    public float Speed = 1f;
+    public float Speed = 3f;
 
 
-    Vector2 position = new Vector2(40, 300);
+    Vector2 position = new Vector2(40, 350);
 
 
     private Animation idleAnimation;
