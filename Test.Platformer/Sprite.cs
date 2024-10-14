@@ -44,14 +44,6 @@ public class Sprite
         }
     }    
 
-    public bool isGrounded { get; set; }
-    public bool isClinging { get; set; }
-    public int Direction { get; set; }
-    public bool isStatic { get; set; }
-    public bool isFalling { get; set; }
-    public bool wallJump;
-    private float spawn = 0;
-
     public Sprite(Dictionary<string, Animation> animations, Rectangle rect)
     {
         this.animations = animations;
